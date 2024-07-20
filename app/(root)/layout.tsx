@@ -1,10 +1,13 @@
 import React from 'react';
 
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <main className='w-full min-h-[90vh] relative pl-72 bg-[#F6F9FC] dark:bg-[#1f1f1f] p-4'>
-        <div className='h-[85vh] rounded-xl bg-white dark:bg-black ml-4 p-8'>{children}</div>
+        <div className='h-[85vh] rounded-xl bg-white dark:bg-black ml-4 p-8'>
+          {children}
+          </div>
       </main>
     </div>
   );
