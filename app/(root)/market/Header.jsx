@@ -14,7 +14,7 @@ const Header = () => {
                     <span>Catalog</span>
                     <span>Card</span>
                     <span>Massage</span>
-                    <span>Accaunt</span>
+                    <Pspan>Accaunt</Pspan>
                 </nav>
             </div>
         </div>
