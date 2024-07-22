@@ -1,11 +1,11 @@
-// import header__logo from '*/header__logo.svg'
+import headerLogo from '*/header__logo.svg';
 
 const Header = () => {
   return (
     <header>
       <div className='container'>
         <div className='flex justify-center align-middle content-between'>
-          <span>{/* <img src={header__logo} alt="error" /> */}</span>
+          <img src={headerLogo} alt='error' />
           <nav>
             <span>Home</span>
             <span>Catalog</span>
