@@ -1,4 +1,4 @@
-import { MIntro,MIntroB,MBestSells } from "@/components/market/shared/m-pages";
+import { MIntro,MIntroB,MBestSells, MBestSellsB, MContent, MFooter } from "@/components/market/shared/m-pages";
 
 const Home = () => {
   return(
@@ -6,6 +6,9 @@ const Home = () => {
    <MIntro/>
     <MIntroB/>
     <MBestSells/>
+    <MBestSellsB/>
+    <MContent/>
+    <MFooter/>
    </>
   )
 };
