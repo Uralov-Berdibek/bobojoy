@@ -1,0 +1,7 @@
+export { default as MHeader } from './m-header'
+export { default as MIntro } from './m-intro'
+export { default as MIntroB } from './m-intro__b'
+export { default as MBestSells} from './m-best-sells'
+export { default as MBestSellsB } from './m-best-sells_b'
+export { default as MContent } from './m-content'
+export { default as MFooter } from './m-footer'
