@@ -1,35 +1,25 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import MCard from './m-card'
 import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import MPaginatoin from './m-pagination';
-import { log } from 'console';
-import axios from 'axios';
 
-const MContent = () => {
+const MContent = ({product}) => {
 
-  const [product,setProduct] = useState([])
-  const [loading, setLoading] = useState(false)
   const [currentPage,setCurrentPage]=useState(1)
-  const [productPerPage] = useState(4)
+  const [productPerPage] = useState(8)
 
-  useEffect(()=>{
-    const fetch = async()=>{
-      setLoading(true)
-      const res = await axios.get('https://fakestoreapi.com/products')
-      console.log(res.data);
-      setProduct(res.data)
-      setLoading(false)
-    }
-    fetch()
-  },[])
 
   const lastIndex = currentPage * productPerPage
   const firstIndex = lastIndex - productPerPage
   const currentProduct = product.slice(firstIndex,lastIndex)
 
-  const paginate = pageNumber => setCurrentPage(pageNumber)
+  const pageCount = Math.ceil(product.length / productPerPage);
+
+  const handlePageChange = (even, value) => {
+    setCurrentPage(value);
+  };
+
+
 
   return (
     <section className='bg-[#f5f5f5] pt-[50px]'>
@@ -38,12 +28,18 @@ const MContent = () => {
                 <span className='text-center underline font-mons font-normal text-[28px]'>Our pruduct</span>
                 <div className='flex flex-wrap justify-between items-start gap-y-[29px]'>
                  {
-                  currentProduct?.map((item,index)=>(
-                    <MCard item={item}/>
+                  currentProduct?.map((item,i)=>(
+                    <MCard key={item.id} item={item}/>
                   ))
                  }
-                  {/* <Pagination count={10} /> */}
-                 <MPaginatoin productPerPage={productPerPage} totalProducts={product.length} paginate={paginate}/>
+                 <div className='min-w-full flex justify-center ' >
+                    <Pagination
+                    
+                    count={pageCount}
+                    page={currentPage}
+                    onChange={handlePageChange}
+                    />
+                    </div>
                 </div>
             </div>
         </div>
