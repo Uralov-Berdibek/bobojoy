@@ -40,7 +40,7 @@ const MContent: React.FC<MContentProps>  = ({product}) => {
                 <div className='flex flex-wrap justify-between items-start gap-y-[29px]'>
                  {
                   currentProduct.map((item)=>(
-                    <Link href={`product/${item.id}`} key={item.id} passHref>
+                    <Link href={`market/product/${item.id}`} key={item.id} passHref>
                     <MCard item={item}/>
                     </Link>
                   ))
