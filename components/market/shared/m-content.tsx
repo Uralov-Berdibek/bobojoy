@@ -2,8 +2,19 @@
 import React, { useState } from 'react'
 import MCard from './m-card'
 import Pagination from '@mui/material/Pagination';
+import Link from 'next/link';
 
-const MContent = ({product}) => {
+interface Product {
+  id: string;
+  title: string;
+  price: number;
+}
+
+interface MContentProps {
+  product: Product[];
+}
+
+const MContent: React.FC<MContentProps>  = ({product}) => {
 
   const [currentPage,setCurrentPage]=useState(1)
   const [productPerPage] = useState(8)
@@ -15,7 +26,7 @@ const MContent = ({product}) => {
 
   const pageCount = Math.ceil(product.length / productPerPage);
 
-  const handlePageChange = (even, value) => {
+  const handlePageChange = (even:unknown, value:number) => {
     setCurrentPage(value);
   };
 
@@ -28,13 +39,14 @@ const MContent = ({product}) => {
                 <span className='text-center underline font-mons font-normal text-[28px]'>Our pruduct</span>
                 <div className='flex flex-wrap justify-between items-start gap-y-[29px]'>
                  {
-                  currentProduct?.map((item,i)=>(
-                    <MCard key={item.id} item={item}/>
+                  currentProduct.map((item)=>(
+                    <Link href={`product/${item.id}`} key={item.id} passHref>
+                    <MCard item={item}/>
+                    </Link>
                   ))
                  }
                  <div className='min-w-full flex justify-center ' >
                     <Pagination
-                    
                     count={pageCount}
                     page={currentPage}
                     onChange={handlePageChange}
