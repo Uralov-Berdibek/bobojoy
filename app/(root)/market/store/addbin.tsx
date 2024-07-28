@@ -10,6 +10,7 @@ interface AddBinState {
   addBin: (task: Task) => void;
 }
 
+
 const useAddBin = create<AddBinState>((set) => ({
   data: [],
   addBin: (task) => set((state) => ({

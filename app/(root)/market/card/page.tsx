@@ -3,12 +3,14 @@ import React from 'react'
 import MInnerCard from '@/components/market/shared/m-inner-card'
 import useAddBin from '../store/addbin'
 
-interface Item {
+interface ItemType {
+    id: number;
     title: string;
-    price:number;
-}
+    price: number;
+  }
+  
 
-const  Card: React.FC = () => {    
+const Card: React.FC = () => {    
 
     const { data } = useAddBin()
 
@@ -30,14 +32,14 @@ const  Card: React.FC = () => {
                     </div>
                 </div>
                 <div className='flex flex-col justify-between items-start gap-[20px]'>
-                {data.map((item, i) => (
-                 <MInnerCard key={i} item={item} />
+                {data.map((item:any) => (
+                <MInnerCard item={item} key={item.id}/>
                  ))}
                 </div>
             </div>
         </div>
     </section>
-  )
-}
+  );
+};
 
 export default Card
