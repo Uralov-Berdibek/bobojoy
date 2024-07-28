@@ -1,11 +1,8 @@
-import headerLogo from '*/header__logo.svg';
-
-const Header = () => {
+const MHeader = () => {
   return (
     <header>
       <div className='container'>
         <div className='flex justify-center align-middle content-between'>
-          <img src={headerLogo} alt='error' />
           <nav>
             <span>Home</span>
             <span>Catalog</span>
@@ -19,4 +16,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default MHeader;

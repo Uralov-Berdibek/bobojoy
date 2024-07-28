@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../../../components/market/shared/m-header';
+import MHeader from '../../../components/market/shared/m-header';
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
-      <Header />
+      <MHeader />
       {children}
     </div>
   );
