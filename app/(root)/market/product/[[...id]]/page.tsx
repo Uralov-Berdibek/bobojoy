@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react';
 import { inner_image,inner_small_image,minus,plus } from '@/public/assets';
 import MSimllar from '@/components/market/shared/m-simllar-product';
 import useAddBin from '../../store/addbin';
+import useFetch from '../../store/fetch';
+import useCount from '../../store/counter';
 
 interface ProductProps {
   params: {
@@ -16,18 +18,23 @@ interface ProductData {
   title: string;
   price: number;
   description: string;
+  category: string;
 }
-
 
 const Product: React.FC<ProductProps> = ({ params }) => {
 
   const [data, setData] = useState<ProductData | null>(null);
   const {addBin}   = useAddBin()
+  const { filterByCategory } = useFetch(state => ({
+    filterByCategory: state.filterByCategory,
+  }));
+  const {count,increment,decrement}= useCount()
 
   const fetchInner = async () => {
     try {
       const res = await axios.get<ProductData>(`https://fakestoreapi.com/products/${params.id}`);
       setData(res.data);
+      filterByCategory(res.data.category);
     } catch (error) {
       console.error("Error fetching product data:", error);
     }
@@ -90,9 +97,9 @@ const Product: React.FC<ProductProps> = ({ params }) => {
           <div className='flex flex-col justify-between items-start gap-[30px]'>
             <div className='flex flex-col justify-between items-start' >
               <div className='w-[115px] h-[39px] flex justify-around items-center bg-white rounded-[8px]'>
-                <span className='w-[25px] h-[25px] flex justify-center items-center'><Image src={minus} alt='minus'/></span>
-                <span className='w-[25px] h-[25px] flex justify-center items-center font-mons font-normal text-[24px]'>1</span>
-                <span className='w-[25px] h-[25px] flex justify-center items-center'><Image src={plus} alt='plus'/></span>
+                <span className='w-[25px] h-[25px] flex justify-center items-center' onClick={decrement}><Image src={minus} alt='minus'/></span>
+                <span className='w-[25px] h-[25px] flex justify-center items-center font-mons font-normal text-[24px]'>{count}</span>
+                <span className='w-[25px] h-[25px] flex justify-center items-center' onClick={increment}><Image src={plus} alt='plus'/></span>
               </div>
               <span className='font-mons font-light text-[12px]'>В наличи 54</span>
             </div>

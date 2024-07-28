@@ -1,6 +1,8 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import { inner_card_image,inner_trash,plus,minus } from '@/public/assets'
+import useCount from '@/app/(root)/market/store/counter';
 
 interface Item {
   title: string;
@@ -12,6 +14,9 @@ interface MInnerCardProps {
 }
 
 const MInnerCard: React.FC<MInnerCardProps> = ({item}) => {
+
+  const {count,increment,decrement} = useCount()
+
   return (
     <div className='flex justify-between items-center gap-[20px]'>
      <div className='bg-[#FFFFFF] py-[17px] px-[27px]'>
@@ -19,7 +24,7 @@ const MInnerCard: React.FC<MInnerCardProps> = ({item}) => {
      </div>
      <div className='flex justify-between items-center gap-[128px]'>
         <div className='flex flex-col justify-between items-start'>
-            <h4 className='font-mons font-normal text-[22px]'>{item.title.length > 10 ? item.title.slice(0, 10) + '...' : item.title}</h4>
+            <h4 className='font-mons font-normal text-[22px]'>{item.title}</h4>
             <span className='font-mons font-normal text-[20px]'>#94667077715</span>
             <span className='font-mons font-normal text-[20px] text-[#a0a0a0]'>Color : white // extra full tire</span>
         </div>
@@ -28,9 +33,9 @@ const MInnerCard: React.FC<MInnerCardProps> = ({item}) => {
             <span className='font-mons font-normal text-[20px]'>${item.price}</span>
         </div>
         <div className='w-[115px] h-[39px] flex justify-around items-center bg-white rounded-[8px]'>
-                <span className='w-[25px] h-[25px] flex justify-center items-center'><Image src={minus} alt='minus'/></span>
-                <span className='w-[25px] h-[25px] flex justify-center items-center font-mons font-normal text-[24px]'>1</span>
-                <span className='w-[25px] h-[25px] flex justify-center items-center'><Image src={plus} alt='plus'/></span>
+                <span className='w-[25px] h-[25px] flex justify-center items-center' onClick={decrement}><Image src={minus} alt='minus'/></span>
+                <span className='w-[25px] h-[25px] flex justify-center items-center font-mons font-normal text-[24px]'>{count}</span>
+                <span className='w-[25px] h-[25px] flex justify-center items-center' onClick={increment}><Image src={plus} alt='plus'/></span>
          </div>
          <span className='font-mons font-normal text-[20px]'>86.999</span>
      </div>

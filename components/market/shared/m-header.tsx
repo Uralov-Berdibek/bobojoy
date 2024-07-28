@@ -17,11 +17,10 @@ const MHeader = () => {
            </Link>
           <nav className='flex justify-between items-center space-x-[33px] font-mons font-light text-[18px]'>
             <Link href={'/market'}className='hover:font-medium'>Home</Link>
-            <Link href={'/'}className='hover:font-medium'>Catalog</Link>
-            <Link href={'market/card'}className='hover:font-medium'>Card</Link>
-            <Link href={'/'}className='hover:font-medium'>Massage</Link>
-            <Link href={'/'}className='hover:font-medium'>Accaunt</Link>
-          
+            <Link href={'/market'}className='hover:font-medium'>Catalog</Link>
+            <Link href={'/market/card'}className='hover:font-medium'>Card</Link>
+            <Link href={'/market'}className='hover:font-medium'>Massage</Link>
+            <Link href={'/market'}className='hover:font-medium'>Accaunt</Link>
             <Image
             src={header__search}
             alt='search'

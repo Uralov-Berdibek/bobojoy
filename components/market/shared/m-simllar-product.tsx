@@ -1,25 +1,18 @@
 "use client"
 import React from 'react'
+import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import MCard from './m-card';
-
-
-const mockItems = [
-    { title: 'Product 1', price: 29.99 },
-    { title: 'Product 2', price: 39.99 },
-    { title: 'Product 3', price: 49.99 },
-    { title: 'Product 4', price: 59.99 },
-    { title: 'Product 5', price: 29.99 },
-    { title: 'Product 6', price: 39.99 },
-    { title: 'Product 7', price: 49.99 },
-    { title: 'Product 8', price: 59.99 }
-  ];
+import useFetch from '@/app/(root)/market/store/fetch';
   
 
 const MSimllar = () => {
+
+  const {categories} = useFetch()
+
   return (
     <section className='pt-[50px]'>
         <div className="container">
@@ -58,8 +51,10 @@ const MSimllar = () => {
         className='max-w-full'
         >
             {
-                mockItems.map((item,i)=>(
-                    <SwiperSlide className='min-w-[262px]' key={i}><MCard item={item}/></SwiperSlide>
+                categories.map((item:any,i)=>(
+                  <Link href={`market/product/${item.id}`} key={i}>
+                    <SwiperSlide className='min-w-[262px]'><MCard item={item}/></SwiperSlide>
+                  </Link>
                 ))
             }
       </Swiper>
