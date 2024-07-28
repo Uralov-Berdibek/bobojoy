@@ -42,7 +42,7 @@ const MContent:React.FC <Product> = () => {
                 <span className='text-center underline font-mons font-normal text-[28px]'>Our pruduct</span>
                 <div className='flex flex-wrap justify-between items-start gap-y-[29px]'>
                  {
-                  currentProduct?.map((item,i)=>(
+                  currentProduct?.map((item:any,i)=>(
                     <Link href={`market/product/${item.id}`} key={i} passHref>
                     <MCard item={item}/>
                     </Link>
