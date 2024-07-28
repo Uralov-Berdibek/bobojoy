@@ -1,7 +1,14 @@
 import Image from 'next/image'
 import { card, card_bin,card_starts } from '@/public/assets'
 
-const MCard = ({item}) => {
+interface MCardProps {
+  item: {
+    title: string;
+    price: number;
+  };
+}
+
+const MCard: React.FC<MCardProps>= ({item}) => {
   return (
 <div className='flex-col justify-start items-center space-y-3'>
     <div className='h-[280px] w-[262px] flex justify-center items-center bg-[#FFFFFF] py-[56px] px-[33px]'>
@@ -17,7 +24,7 @@ const MCard = ({item}) => {
         alt='card_starts'
         />
     </span>
-    <div className='flex justify-between items-center'>
+    <div className='flex justify-between items-c  enter'>
        <span className='font-mons font-normal text-[22px]'>${item?.price}</span>
        <Image
         src={card_bin}

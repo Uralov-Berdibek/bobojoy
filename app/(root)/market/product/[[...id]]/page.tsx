@@ -1,6 +1,14 @@
 import React from 'react';
 
-const Product = ({ params }: { params: { id: string } }) => {
+
+interface ProductProps {
+  params: {
+    id: string;
+  };
+}
+
+
+const Product: React.FC<ProductProps> = ({ params }) => {
   return <div>Product {params.id}</div>;
 };
 
