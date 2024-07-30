@@ -20,8 +20,8 @@ return (
                </div>
                <Link href={'/'} className='underline font-mons font-normal text-[22px]'>view now</Link>
              </div>
-             <div>
-
+             <div className='max-w-[425px] pt-[50px]'>
+             
             <Swiper 
            autoplay={{
              delay: 4500,
@@ -29,7 +29,7 @@ return (
             }}
             spaceBetween={20}
             modules={[Autoplay]}
-            className="max-w-[425px]"
+            className="max-w-full"
             >
         <SwiperSlide className=''><Image src={intro__image} alt='intro_image' /></SwiperSlide>
         <SwiperSlide className=''><Image src={intro__image} alt='intro_image' /></SwiperSlide>
